@@ -25,7 +25,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		/** 
 		 * Get random plans and att them to the array
 		 **/
-		$scope.getPlan = function() {
+		$scope.initPlan = function() {
 			// Reset the recipes
 			$scope.recipes = [];
 
