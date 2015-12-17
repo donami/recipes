@@ -19,7 +19,6 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			// Redirect after save
 			recipe.$save(function(response) {
 				$location.path('recipes/' + response._id);
-				console.log(response);
 
 				// Clear form fields
 				$scope.name = '';
