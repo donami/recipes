@@ -16,6 +16,10 @@ var RecipeSchema = new Schema({
 		required: 'Please fill Recipe name',
 		trim: true
 	},
+	category: {
+		type: Schema.ObjectId,
+		ref: 'Category'
+	},
 	created: {
 		type: Date,
 		default: Date.now

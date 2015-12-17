@@ -97,7 +97,7 @@ exports.getRandom = function(req, res) {
  * Recipe middleware
  */
 exports.recipeByID = function(req, res, next, id) { 
-	Recipe.findById(id).populate('user', 'displayName').exec(function(err, recipe) {
+	Recipe.findById(id).populate('user', 'displayName').populate('category').exec(function(err, recipe) {
 		if (err) return next(err);
 		if (! recipe) return next(new Error('Failed to load Recipe ' + id));
 		req.recipe = recipe ;

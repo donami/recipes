@@ -9,7 +9,9 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 		$scope.create = function() {
 			// Create new Recipe object
 			var recipe = new Recipes ({
-				name: this.name
+				name: this.name,
+				description: this.description,
+				category: this.category
 			});
 
 			// Redirect after save
