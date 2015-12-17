@@ -5,7 +5,7 @@
 		<div class="col-md-6">
 			<ul>
 				<li ng-repeat="recipe in recipes track by $index">
-					{{ recipe.name }}
+					<a ng-href="/#!/recipes/{{ recipe._id }}">{{ recipe.name }}</a>
 				</li>
 			</ul>
 		</div>
