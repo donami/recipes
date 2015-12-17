@@ -20,6 +20,10 @@ var RecipeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Category'
 	},
+	image: {
+		type: String,
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now

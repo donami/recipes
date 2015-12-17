@@ -12,12 +12,14 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			var recipe = new Recipes ({
 				name: this.name,
 				description: this.description,
-				category: this.category
+				category: this.category,
+				image: this.image
 			});
 
 			// Redirect after save
 			recipe.$save(function(response) {
 				$location.path('recipes/' + response._id);
+				console.log(response);
 
 				// Clear form fields
 				$scope.name = '';

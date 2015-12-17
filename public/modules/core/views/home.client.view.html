@@ -8,11 +8,13 @@
 					<div class="row">
 						<h3>{{ days[$index] }}</h3>
 						<div class="col-md-3">
-							<img src="img/food.jpg" alt=""/>
+							<img src="img/{{ recipe.image }}" style="width: 100px" alt=""/>
 						</div>
 						<div class="col-md-9">
 							<h4><a ng-href="/#!/recipes/{{ recipe._id }}">{{ recipe.name }}</a></h4>
-							
+
+							{{ recipe.description  | limitTo: 150 }}...
+
 							<button type="button" ng-click="swapMeal($index)" class="btn btn-default btn-xs">
 								<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
 							</button>
