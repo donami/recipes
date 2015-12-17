@@ -9,9 +9,22 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// The array of the recipes viewed
 		$scope.recipes = [];
 
-		// Number of recipes wanted
-		var nrOfRecipes = 4;
+		$scope.days = [
+			'Monday',
+			'Tuesday',
+			'Wednesday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+			'Sunday'
+		];
 
+		// Number of recipes wanted
+		var nrOfRecipes = 7;
+
+		/** 
+		 * Get random plans and att them to the array
+		 **/
 		$scope.getPlan = function() {
 			// Reset the recipes
 			$scope.recipes = [];
@@ -26,5 +39,16 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			}
 		};
 
+		/**
+		 *	Swap the meal into another random meal
+		 **/
+		$scope.swapMeal = function(index) {
+			$http.get('/recipes/random')
+				.then(function(response) {
+					$scope.recipes[index] = response.data;
+				});	
+		};
+
 	}
 ]);
+
