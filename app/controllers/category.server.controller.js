@@ -32,7 +32,7 @@ exports.read = function(req, res) {
 			if (!category) {
 				return res.status(404).send({
 					message: 'category not found'
-				})
+				});
 			}
 			res.json(category);
 		}

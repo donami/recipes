@@ -16,12 +16,13 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			// Reset the recipes
 			$scope.recipes = [];
 
+			var addRecipes = function(response) {
+				$scope.recipes.push(response.data);
+			};
+
 			// Run a loop for each recipe needed and add it to the array
 			for (var i = 0; i < nrOfRecipes; i++) {
-				$http.get('/recipes/random')
-					.then(function(response) {
-						$scope.recipes.push(response.data);
-				});				
+				$http.get('/recipes/random').then(addRecipes);				
 			}
 		};
 

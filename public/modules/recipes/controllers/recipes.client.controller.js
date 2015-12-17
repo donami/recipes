@@ -2,7 +2,7 @@
 
 // Recipes controller
 angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipes',
-	function($scope, $stateParams, $location, Authentication, Recipes) {
+	function($scope, $stateParams, $location, Authentication, Recipes, Categories) {
 		$scope.authentication = Authentication;
 
 		// Create new Recipe
