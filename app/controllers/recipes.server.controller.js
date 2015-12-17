@@ -85,6 +85,15 @@ exports.list = function(req, res) {
 };
 
 /**
+ * Get a random recipe
+ **/
+exports.getRandom = function(req, res) {
+	Recipe.random(function(err, recipe) {
+		res.jsonp(recipe);
+	});
+};
+
+/**
  * Recipe middleware
  */
 exports.recipeByID = function(req, res, next, id) { 

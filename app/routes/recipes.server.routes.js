@@ -9,6 +9,9 @@ module.exports = function(app) {
 		.get(recipes.list)
 		.post(users.requiresLogin, recipes.create);
 
+	app.route('/recipes/random')
+		.get(recipes.getRandom);
+
 	app.route('/recipes/:recipeId')
 		.get(recipes.read)
 		.put(users.requiresLogin, recipes.hasAuthorization, recipes.update)
