@@ -3,6 +3,15 @@
 		<h1 data-ng-bind="recipe.name"></h1>
 		<p data-ng-bind="recipe.description"></p>
 
+		<div id="ingredients">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="item in recipe.ingredients">
+					{{ item.amount }} {{ item.ingredient.unit }} - {{ item.ingredient.name }}
+				</li>
+			</ul>
+
+		</div>
+
 		In Category: <a ng-href="/#!/categories/{{recipe.category._id}}">{{ recipe.category.name }}</a>
 
 	</div>

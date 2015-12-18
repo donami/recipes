@@ -1,9 +1,51 @@
 'use strict';
 
 // Recipes controller
-angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipes',
-	function($scope, $stateParams, $location, Authentication, Recipes) {
+angular.module('recipes').controller('RecipesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipes', 'Ingredients',
+	function($scope, $stateParams, $location, Authentication, Recipes, Ingredients) {
 		$scope.authentication = Authentication;
+
+		// Fetch all the ingredients
+		$scope.ingredients = Ingredients.query();
+
+		// The added ingredients
+		$scope.addedIngredients = [];
+
+		// The selected ingredient
+		$scope.selectedRecipe = {};
+
+		// Format the added ingredients to be passed to server
+		var formatIngredients = function() {
+			var ingredients = [];
+
+			angular.forEach($scope.addedIngredients, function(value, key) {
+				ingredients.push({
+					amount: value.amount,
+					ingredient: value.recipe._id
+				});
+			});
+
+			return ingredients;
+		};
+
+		/**
+		 *	Add an ingredient to the recipe
+		 **/
+		$scope.addIngredient = function() {
+			// Make sure that both fields are filled
+			if (typeof $scope.selectedRecipe.recipe !== 'undefined' && typeof $scope.selectedRecipe.amount !== 'undefined') {
+				$scope.addedIngredients.push($scope.selectedRecipe);
+
+				delete $scope.selectedRecipe;
+			}
+		};
+
+		/**
+		 * Remove an ingredient from the added ingredients
+		 **/ 
+		$scope.removeIngredient = function(item) {
+			$scope.addedIngredients.splice(item, 1);
+		};
 
 
 		// Create new Recipe
@@ -12,8 +54,10 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			var recipe = new Recipes ({
 				name: this.name,
 				description: this.description,
-				category: this.category,
-				image: this.image
+				//category: this.category,
+				category: '5671fb6b407052af5e1b40d0',
+				image: this.image,
+				ingredients: formatIngredients()
 			});
 
 			// Redirect after save

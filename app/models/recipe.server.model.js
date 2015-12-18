@@ -20,6 +20,13 @@ var RecipeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Category'
 	},
+	ingredients: [{
+		amount: String,
+		ingredient: {
+			type: Schema.ObjectId,
+			ref: 'Ingredient'
+		}
+	}],
 	image: {
 		type: String,
 		trim: true
